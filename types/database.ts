@@ -35,6 +35,7 @@ export interface TradeWithStats extends Trade {
   avatar_url: string | null;
   average_rating: number;
   total_ratings: number;
+  like_count?: number;
 }
 
 export interface Rating {
@@ -87,5 +88,33 @@ export interface UpdateTradeInput extends Partial<CreateTradeInput> {
 export interface CreateRatingInput {
   trade_id: string;
   rating: number; // 1-5
+}
+
+// Social features
+export interface Like {
+  id: string;
+  trade_id: string;
+  user_id: string;
+  created_at: string;
+}
+
+export interface Comment {
+  id: string;
+  trade_id: string;
+  user_id: string;
+  content: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CommentWithUser extends Comment {
+  username: string;
+  avatar_url: string | null;
+}
+
+// Form types for creating comments
+export interface CreateCommentInput {
+  trade_id: string;
+  content: string;
 }
 
