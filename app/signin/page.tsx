@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Suspense } from 'react'
 import SignInForm from '@/components/auth/SignInForm'
 
 export default function SignInPage() {
@@ -23,7 +24,9 @@ export default function SignInPage() {
         </div>
 
         <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-8">
-          <SignInForm />
+          <Suspense fallback={<div className="text-center text-gray-500 dark:text-gray-400">Loading...</div>}>
+            <SignInForm />
+          </Suspense>
         </div>
 
         <p className="text-center text-sm text-gray-600 dark:text-gray-400">
